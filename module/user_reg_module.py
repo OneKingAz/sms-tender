@@ -1,4 +1,6 @@
-from bottle import get, post, request, route, run
+from bottle import get, post, request, route, run,static_file
+import sys
+import os
 import mysql.connector
 mydb = mysql.connector.connect(
   host="176.126.167.134",
@@ -7,10 +9,10 @@ mydb = mysql.connector.connect(
   database="user8745_login"
 )
 mycursor = mydb.cursor()
-
+os.access(r"index.html", os.F_OK)
 @route('/')
 def hello():
-    return "Hello World!"
+    return static_file("index.html", root='/') 
 
 @get('/reg')
 def reg():
@@ -48,14 +50,16 @@ def login():
             <input value="Вход в систему" type="submit" />
         </form>
     '''
+# def check_login(username,password)
+#     sql = "SELECT password FROM users_login WHERE login = %s" 
+#     mycursor.execute(sql,username)
+#     sql_password = mycursor.fetchall()
 
 @post('/login') # or @route('/login', method='POST')
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
-    sql = "SELECT password FROM users_login WHERE login = %s" 
-    mycursor.execute(sql,username)
-    sql_password = mycursor.fetchall()
+    
     return "<p>{}<p>".format(sql_password)
     if check_login(username, password):
         return "<p>Вы ввели проавильный логин и пароль.</p>"

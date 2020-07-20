@@ -11,14 +11,15 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-@route('/hello')
+@route('/')
 def server_static():
-    return static_file('D:\\templates\\index.html' , root="root")
+    msg = ('Hello')
+    return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
     
 
 @route('/static/<filename>')
 def server_static(filename):
-    return static_file(filename, root='/path/to/your/static/files')
+    return static_file(filename, root='C:\\GitHub\\sms-tender\\static')
 
 @get('/register')
 def reg():

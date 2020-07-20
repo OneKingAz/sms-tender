@@ -2,82 +2,37 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Login</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<title>Регистрация</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
-		<div class="login">
-			<h1>Login</h1>
+		<div class="register">
+			<h1>Регистрация</h1>
 			<div class="links">
-				<a href="{{ url_for('login') }}" class="active">Login</a>
-				<a href="#">Register</a>
+				<a href="'login'">Войти</a>
+				<a href="'register" class="active">Введите свои данные</a>
 			</div>
-			<form action="{{ url_for('login') }}" method="post">
-				<label for="username">
+			<form action="register" method="post" autocomplete="off">
+				<label for="Придумайте логин">
 					<i class="fas fa-user"></i>
 				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
+				<input name="new_username" type="text" />
+				<label for="Придумайте пароль">
 					<i class="fas fa-lock"></i>
 				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<div class="msg">{{ msg }}</div>
-				<input type="submit" value="Login">
+				<input name="password" type="password" />
+				<label for="Потверждение пароля">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input name="password_correct" type="password" />
+				<label for="Номер телефона">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input name="phone_number" type="text" />
+				<input type="submit" value="Зарегистрироваться">
 			</form>
 		</div>
-	</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Авторизация</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    </head>
-    <body>
-        <div class="login">
-            <h1>Login</h1>
-            <div class="links">
-                <a href="login" class="active">Login</a>
-                <a href="#">Register</a>
-            </div>
-            <form action="login" method="post">
-                <label for="username">
-                    <i class="fas fa-user"></i>
-                </label>
-                <input type="text" name="username" placeholder="Username" id="username" required>
-                <label for="password">
-                    <i class="fas fa-lock"></i>
-                </label>
-                <input type="password" name="password" placeholder="Password" id="password" required>
-                <div class="msg">{{ msg }}</div>
-                <input type="submit" value="Login">
-            </form>
-        </div>
-    </body>
-    
-    <style>
+		<style>
     * {
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
@@ -226,4 +181,5 @@ body.loggedin {
   margin: 0 0 10px 0;
 }
     </style>
-</html>""")
+	</body>
+</html>

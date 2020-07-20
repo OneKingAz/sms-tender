@@ -56,32 +56,33 @@ def login():
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
-    print("Пользователь вводить следующие данные в браузер {}").format(username)
-    print(type(username))
-    print("Пользователь вводить следующий пароль{}").format(password)
+#     print("Пользователь вводить следующие данные в браузер" + username)
+#     print(type(username))
+#     print("Пользователь вводить следующий пароль{}").format(password)
     login = tuple(username)
-    print("Фреймворк преобразует его в кортеж {}").format(login)
-    print(type(login))
-    return (check_login(login,password))
+#     print("Фреймворк преобразует его в кортеж {}").format(login)
+#     print(type(login))
+    return (check_login2(username,password))
 def check_login(username,password):
     sql = "SELECT password FROM users_login WHERE login = %s"
-    print("Функция check_login, получает аргумент {}").format(username)
-    print(type(username))
-    print("Пароль check_login{}").format(password)
-    print(type(password))
+#     print("Функция check_login, получает аргумент {}").format(username)
+#     print(type(username))
+#     print("Пароль check_login{}").format(password)
+#     print(type(password))
     
     mycursor.execute(sql,username)
     myresult = mycursor.fetchall()
     sql_password = []
     for x in myresult:
       sql_password.append(x)
-    print("Пароль который получил от SQL-сервер{}").format(sql_password)
-    print (type(sql_password))
+#     print("Пароль который получил от SQL-сервер{}").format(sql_password)
+#     print (type(sql_password))
     if sql_password[0] == password:
         return True
-    elif sql_password != password:
+    elif sql_password[0] != password:
             return False
-    
+def check_login2(username,password):
+    return (username,password)
         
     
         

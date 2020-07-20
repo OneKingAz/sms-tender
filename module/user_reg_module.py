@@ -50,19 +50,28 @@ def login():
             <input value="Вход в систему" type="submit" />
         </form>
     '''
-# def check_login(username,password)
-#     sql = "SELECT password FROM users_login WHERE login = %s" 
-#     mycursor.execute(sql,username)
-#     sql_password = mycursor.fetchall()
+def check_login(username,password):
+    sql = "SELECT password FROM users_login WHERE login = %s"
+    mycursor.execute(sql,username)
+    myresult = mycursor.fetchall()
+    sql_password = []
+    for x in myresult:
+      sql_password.append(x)
+    if sql_password[0] == password:
+        return True
+    elif sql_password != password:
+            return False
+    
+        
+    
 
 @post('/login') # or @route('/login', method='POST')
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
+    login = tuple(username)
+    print(type(login))
+    return (check_login(login,password))
     
-    return "<p>{}<p>".format(sql_password)
-    if check_login(username, password):
-        return "<p>Вы ввели проавильный логин и пароль.</p>"
-    else:
-        return "<p>Неправильный логин или пароль.</p>"
+        
 run(host='localhost', port=8080, debug=True)

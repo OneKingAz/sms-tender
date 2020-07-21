@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Добро пожаловать</title>
+		<link rel="stylesheet" href="static/style.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>Авторизация</h1>
+			<div class="links">
+				<a href="/login" class="active">Введи ваш логин и пароль</a>
+				</div>
+			<form action="/login" method="post">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Логин" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Пароль" id="password" required>
+				<input type="submit" value="Войти">
+			</form>
+		</div>
+	</body>
+</html>

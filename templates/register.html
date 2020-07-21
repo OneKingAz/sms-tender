@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Добро пожаловать</title>
+		<link rel="stylesheet" href="static/style.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>Регистрация</h1>
+			<div class="links">
+				<a href="/register" class="active">Заполните пожалуйста!</a>
+				</div>
+			<form action="/register" method="post">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="new_username" placeholder="Логин" id="new_username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+                <input type="password" name="password" placeholder="Пароль" id="password" required>
+                <label for="password">
+					<i class="fas fa-lock"></i>
+                </label>
+                
+                <input type="password" name="password_correct" placeholder="Потверждение пароля" id="password_correct" required>
+                
+                <label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input type="text" name="phone_number" placeholder="Номер телефона" id="phone_number" required>
+				<input type="submit" value="Заоегистрироваться">
+			</form>
+		</div>
+	</body>
+</html>

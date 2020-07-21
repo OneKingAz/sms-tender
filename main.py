@@ -3,18 +3,18 @@ import sys
 import os
 import mysql.connector
 mydb = mysql.connector.connect(
-  host="176.126.167.134",
-  user="user8745_login",
-  password="W1ww6y2c",
-  database="user8745_login"
+  host="###.126.167.134",
+  user="###",
+  password="###",
+  database="###"
 )
 mycursor = mydb.cursor()
 
 
 @route('/')
 def server_static():
-    msg = ('Hello')
-    return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
+    return ("<p>Hello Word<p")
+    # return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
     
 
 @route('/static/<filename>')
@@ -23,15 +23,16 @@ def server_static(filename):
 
 @get('/register')
 def reg():
-    return '''
-        <form action="/register" method="post">
-            Логин: <input name="new_username" type="text" />
-            Пароль: <input name="password" type="password" />
-            Потверждение пароля: <input name="password_correct" type="password" />
-            <p>Введите пожалуйста номер телефона в формате +996(555)123456<p>
-            Номер телефона: <input name="phone_number" type="text" />
-            <input value="Вход в систему" type="submit" />
-            '''
+    return static_file('register.html' , root="C:\\GitHub\\sms-tender\\templates")
+    # return '''
+    #     <form action="/register" method="post">
+    #         Логин: <input name="new_username" type="text" />
+    #         Пароль: <input name="password" type="password" />
+    #         Потверждение пароля: <input name="password_correct" type="password" />
+    #         <p>Введите пожалуйста номер телефона в формате +996(555)123456<p>
+    #         Номер телефона: <input name="phone_number" type="text" />
+    #         <input value="Вход в систему" type="submit" />
+    #         '''
 
 @post('/register') 
 def reg_account():
@@ -39,6 +40,8 @@ def reg_account():
     password_correct = request.forms.get('password_correct')
     password = request.forms.get('password')
     phone_number = request.forms.get('phone_number')
+    
+    
     login = tuple([new_username])
     phone_number_user = tuple([phone_number])
     password_tuple = tuple([password])
@@ -70,13 +73,14 @@ def check_number(phone_number):
 
 @get('/login') # or @route('/login')
 def login():
-    return '''
-        <form action="/login" method="post">
-            Логин: <input name="username" type="text" />
-            Пароль: <input name="password" type="password" />
-            <input value="Вход в систему" type="submit" />
-        </form>
-    '''
+    return static_file('login.html' , root="C:\\GitHub\\sms-tender\\templates")
+    # return '''
+    #     <form action="/login" method="post">
+    #         Логин: <input name="username" type="text" />
+    #         Пароль: <input name="password" type="password" />
+    #         <input value="Вход в систему" type="submit" />
+    #     </form>
+    # '''
 @post('/login') # or @route('/login', method='POST')
 def do_login():
     username = request.forms.get('username')

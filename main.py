@@ -15,7 +15,7 @@ mycursor = mydb.cursor()
 @route('/')
 def server_static():
     return ("<p>Hello Word<p")
-    # return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
+    ##return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
     
 
 @route('/static/<filename>')
@@ -41,8 +41,12 @@ def reg_account():
     password_correct = request.forms.get('password_correct')
     password = request.forms.get('password')
     phone_number = request.forms.get('phone_number')
+<<<<<<< HEAD
+=======
+    print(new_username,password_correct,password,phone_number)
     
     
+>>>>>>> 165a032f01e67338451443aa3261b5d240e63f9d
     login = tuple([new_username])
     phone_number_user = tuple([phone_number])
     password_tuple = tuple([password])
@@ -88,7 +92,9 @@ def do_login():
     password = request.forms.get('password')
     login = tuple([username])
     if check_password(login,password) == True:
-        return "<p>Добро пожаловать!<p>"
+        resp = static_file('hello.html' , root="C:\\GitHub\\sms-tender\\templates")
+        resp.set_cookie("mycookie","lolo")
+        return resp
     elif check_password(login,password) == False:
         return "<p>Вы ввели неправильно логин или пароль!<p>"
 def check_password(username,password):

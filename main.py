@@ -3,10 +3,10 @@ import sys
 import os
 import mysql.connector
 mydb = mysql.connector.connect(
-  host="###.126.167.134",
-  user="###",
-  password="###",
-  database="###"
+  host="176.126.167.134",
+  user="user8745_login",
+  password="W1ww6y2c",
+  database="user8745_login"
 )
 mycursor = mydb.cursor()
 
@@ -40,6 +40,7 @@ def reg_account():
     password_correct = request.forms.get('password_correct')
     password = request.forms.get('password')
     phone_number = request.forms.get('phone_number')
+    print(new_username,password_correct,password,phone_number)
     
     
     login = tuple([new_username])
@@ -87,7 +88,9 @@ def do_login():
     password = request.forms.get('password')
     login = tuple([username])
     if check_password(login,password) == True:
-        return "<p>Добро пожаловать!<p>"
+        resp = static_file('hello.html' , root="C:\\GitHub\\sms-tender\\templates")
+        resp.set_cookie("mycookie","lolo")
+        return resp
     elif check_password(login,password) == False:
         return "<p>Вы ввели неправильно логин или пароль!<p>"
 def check_password(username,password):

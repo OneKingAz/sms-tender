@@ -4,10 +4,10 @@ application  = Bottle()
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="176.126.167.134",
-  user="user8745_login",
+  host="*.126.167.134",
+  user="*login",
   password="W1ww6y2c",
-  database="user8745_login"
+  database="user8745*"
 )
 mycursor = mydb.cursor()
 

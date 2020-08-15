@@ -3,12 +3,13 @@ import sys
 import os
 import mysql.connector
 mydb = mysql.connector.connect(
-  host="###.126.167.134",
-  user="###",
-  password="###",
-  database="###"
+  host="176.126.167.134",
+  user="user8745_login",
+  password="W1ww6y2c",
+  database="user8745_login"
 )
 mycursor = mydb.cursor()
+
 
 
 @route('/')
@@ -100,4 +101,4 @@ def check_password(username,password):
     elif user_account_password == password:
         return True
 
-run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True, reloader=True)

@@ -3,10 +3,10 @@ import sys
 import os
 import mysql.connector
 mydb = mysql.connector.connect(
-  host="###.126.167.134",
-  user="###",
-  password="###",
-  database="###"
+  host="176.126.167.134",
+  user="user8745_login",
+  password="W1ww6y2c",
+  database="user8745_login"
 )
 mycursor = mydb.cursor()
 
@@ -14,7 +14,7 @@ mycursor = mydb.cursor()
 @route('/')
 def server_static():
     return ("<p>Hello Word<p")
-    # return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
+    ##return static_file('index.html' , root="C:\\GitHub\\sms-tender\\templates")
     
 
 @route('/static/<filename>')
@@ -40,8 +40,6 @@ def reg_account():
     password_correct = request.forms.get('password_correct')
     password = request.forms.get('password')
     phone_number = request.forms.get('phone_number')
-    
-    
     login = tuple([new_username])
     phone_number_user = tuple([phone_number])
     password_tuple = tuple([password])

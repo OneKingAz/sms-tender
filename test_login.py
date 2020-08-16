@@ -78,6 +78,7 @@ def check_inn():
 ### Функция для отправки SQL-запроса! ИНН
 def sql_select(colown, inn):
     inn = tuple([inn])
+    #sql = ("SELECT * FROM blacklist WHERE inn = %s ")
     sql = ("SELECT {} FROM blacklist WHERE inn = %s ").format(colown)
     mycursor.execute(sql, inn)
     myresult = mycursor.fetchall()

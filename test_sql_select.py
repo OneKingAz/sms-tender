@@ -26,4 +26,4 @@ def sql_select(colown, inn):
 value = ("1234567890")  
 
 
-print(sql_select("personname", value))
+print(personname = sql_select("personname", value))

@@ -1,3 +1,19 @@
+
+<XML ID="users">
+    <?xml version="1.0"?>
+    <users>
+        <users>
+            <TITLE> users </TITLE>
+            <PRICE> 10.00 </PRICE>
+        </users>
+        <users>
+            <TITLE> Prod#2 </TITLE>
+            <PRICE> 20.00 </PRICE>
+        </users>
+    </users>
+</XML> 
+
+
 <b>Зарегистрированное имя в системе <b>
 % for item in personname[0]:
  <div>{{personname}}</div>

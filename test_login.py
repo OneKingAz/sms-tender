@@ -1,19 +1,19 @@
-from bottle import Bottle,route, request, static_file, run, get, post, abort
+from bottle import Bottle,route, request, static_file, run, get, post, abort, SimpleTemplate,template 
 application  = Bottle()
 
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="*.126.167.134",
-  user="*login",
+  host="176.126.165.135",
+  user="user8745_login",
   password="W1ww6y2c",
-  database="user8745*"
+  database="user8745_login"
 )
 mycursor = mydb.cursor()
 
 ###Функция для проверки логина и пароля! 
 def check_password(username,password):
-    sql = ('SELECT password FROM users_login WHERE login = %s')
+    sql = ('SELECT password FROM accounts WHERE username = %s')
     mycursor.execute(sql,username)
     myresult = mycursor.fetchone()
     user_account_password = (myresult[0])
@@ -41,32 +41,73 @@ def return_inn():
         Логин: <input name="username" type="text" />
         Пароль: <input name="password" type="password" />
         ИНН: <input name="inn" type="text" />
+        Паспорт: <input name="passport" type="text" />
         <input value="Проверить" type="submit" />
         </form>    
         
     '''
+
+
 ### POST- запрос с встроенной функцией для проверки ИНН 
 @post( '/check_inn' )
 def check_inn():
     username = request.forms.username
     password = request.forms.password
     inn = request.forms.inn
+    passport = request.forms.passport
     login = tuple([username])
     if check_password(login,password) == True:
-        sql = "SELECT * FROM blacklist WHERE inn = %s"
-        inn = (inn + ",")
-        print(inn)
-        mycursor.execute(sql, inn)
-        myresult = mycursor.fetchall()
-        info = []
-        for x in myresult:
-            info.append[x]
-        print(type(inn))
-        print(val)
-        
-        return info
+        #sql = "SELECT * FROM blacklist WHERE inn = %s "
+        value = str(inn)
+        personname = sql_select("personname", value)
+        passport_id = sql_select("passport_id", value)
+        person_date = sql_select("person_date", value)
+        black_date = sql_select("black_date", value)
+        end_black_date =sql_select("black_date", value)
+        org_name = sql_select("org_name", value)
+        coment = sql_select("coment", value)
+        tovar = sql_select("tovar", value)
+        dolg = sql_select("dolg", value)
+        #print(personname)
+        #return template('<b>Зарегистрированное имя в системе <b>  <p>{{personname}}</p>', personname=personname)
+        return template('C:\\\GitHub\\\sms-tender\\\page_template.tpl', personname=personname,passport_id=passport_id, person_date=person_date,black_date=black_date,end_black_date=end_black_date,org_name=org_name,coment=coment,tovar=tovar,dolg=dolg)
+
     elif check_password(login,password) == False:
         return "<p>Вы ввели неправильно логин или пароль!<p>"
+
+### Функция для отправки SQL-запроса! ИНН
+def sql_select(colown, inn):
+    inn = tuple([inn])
+    sql = ("SELECT {} FROM blacklist WHERE inn = %s ").format(colown)
+    mycursor.execute(sql, inn)
+    myresult = mycursor.fetchall()
+    result = []
+    for x in myresult:
+        #print(x)
+        result.append(x)
+    result = str(result)
+    #return result
+    return remove(result,"(),[]!!''datetime.date")
+ ### Функция для удаления символов!!  
+ #  
+def remove(value, deletechars):
+    for c in deletechars:
+        value = value.replace(c,'')
+    return value;
+
+
+### Функция для отправки SQL-запроса! Паспорт!
+def sql_select_passport(colown, passport_id):
+    inn = tuple([inn])
+    sql = ("SELECT {} FROM blacklist WHERE inn = %s ").format(colown)
+    mycursor.execute(sql, inn)
+    myresult = mycursor.fetchall()
+    result = []
+    for x in myresult:
+        print(x)
+        result.append(x)
+    result = str(result) 
+    return remove(result, '()[],')
 
 
 
@@ -78,7 +119,7 @@ def do_login():
     if check_password(login,password) == True:
         return yes()
     elif check_password(login,password) == False:
-        return "<p>Error!<p>"
+        return "<p>Неправильный логин или пароль!<p>"
 
 
 def yes():

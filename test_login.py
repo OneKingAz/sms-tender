@@ -68,9 +68,10 @@ def check_inn():
         coment = sql_select("coment", value)
         tovar = sql_select("tovar", value)
         dolg = sql_select("dolg", value)
+        id = sql_select("id", value)
         #print(personname)
         #return template('<b>Зарегистрированное имя в системе <b>  <p>{{personname}}</p>', personname=personname)
-        return template('C:\\\GitHub\\\sms-tender\\\page_template.tpl', personname=personname,passport_id=passport_id, person_date=person_date,black_date=black_date,end_black_date=end_black_date,org_name=org_name,coment=coment,tovar=tovar,dolg=dolg)
+        return template('C:\\\GitHub\\\sms-tender\\\page_template.tpl', personname=personname,passport_id=passport_id, value=value,person_date=person_date,black_date=black_date,end_black_date=end_black_date,org_name=org_name,coment=coment,tovar=tovar,dolg=dolg,id=id)
 
     elif check_password(login,password) == False:
         return "<p>Вы ввели неправильно логин или пароль!<p>"

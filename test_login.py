@@ -142,6 +142,9 @@ def yes():
         Причина поподания в черный список: <input name="coment" type="text" />
         Купленный товар: <input name="tovar" type="text" />
         Сумма долга: <input name="dolg" type="text" />
+        <dialog>
+        <p>Это окно, которое сделано на html5 и javascript</p>
+        <button id="close">Закрыть</button>
         <input value="Записать" type="submit" />
         </form>
     '''

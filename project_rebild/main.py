@@ -11,10 +11,10 @@ application  = Bottle()
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="176.126.165.135",
-  user="user8745_login",
-  password="W1ww6y2c",
-  database="user8745_login",
+  host="",
+  user="d",
+  password="s",
+  database="d",
 )
 @post('/login')
 def do_login():

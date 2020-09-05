@@ -3,9 +3,9 @@ import sys
 import os
 import mysql.connector
 mydb = mysql.connector.connect(
-  host="176.126.167.134",
-  user="user8745_login",
-  password="W1ww6y2c",
+  host="1",
+  user="asd",
+  password="asd",
   database="user8745_login"
 )
 mycursor = mydb.cursor()
